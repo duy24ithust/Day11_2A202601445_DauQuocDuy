@@ -16,14 +16,14 @@
 ### 📍 Checkpoint 1 — Lọc & Chặn Prompt Injection (Input Guardrails)
 *File thực hiện:* [`src/guardrails/input_guardrails.py`](file:///Users/dauquocduy/workspace/AI20K/lab/Day11_2A202601445_DauQuocDuy/src/guardrails/input_guardrails.py)
 
-- [ ] **TODO 1 (`detect_injection`)**:
-  - [ ] Chuẩn hóa chuỗi văn bản: dùng `unicodedata.normalize("NFKC", text)`, chuyển sang lowercase, lọc bỏ các ký tự vô hình/zero-width space (`\u200b`, `\u200c`, ...).
-  - [ ] Xây dựng các mẫu regex phát hiện Direct Injection & Indirect Injection (ví dụ: `ignore all previous instructions`, `reveal password`, `giả lập vai trò`, ...).
-  - [ ] Phân biệt dữ liệu email/RAG ngân hàng lành tính (không chặn nhầm câu hỏi tóm tắt hợp lệ).
-- [ ] **TODO 2 (`topic_filter`)**:
-  - [ ] Lọc bỏ các câu hỏi ngoài phạm vi hỗ trợ của ngân hàng VinBank.
-- [ ] **TODO 3 (`InputGuardrailPlugin`)**:
-  - [ ] Tích hợp `detect_injection` và `topic_filter` vào luồng `before_run` của ADK plugin để chặn request ngay từ đầu vào.
+- [x] **TODO 1 (`detect_injection`)**:
+  - [x] Chuẩn hóa chuỗi văn bản: dùng `unicodedata.normalize("NFKC", text)`, chuyển sang lowercase, lọc bỏ các ký tự vô hình/zero-width space (`\u200b`, `\u200c`, ...).
+  - [x] Xây dựng các mẫu regex phát hiện Direct Injection & Indirect Injection (ví dụ: `ignore all previous instructions`, `reveal password`, `giả lập vai trò`, ...).
+  - [x] Phân biệt dữ liệu email/RAG ngân hàng lành tính (không chặn nhầm câu hỏi tóm tắt hợp lệ).
+- [x] **TODO 2 (`topic_filter`)**:
+  - [x] Lọc bỏ các câu hỏi ngoài phạm vi hỗ trợ của ngân hàng VinBank.
+- [x] **TODO 3 (`InputGuardrailPlugin`)**:
+  - [x] Tích hợp `detect_injection` và `topic_filter` vào luồng `before_run` của ADK plugin để chặn request ngay từ đầu vào. *(PASSED 3/3 public tests)*
 
 ---
 

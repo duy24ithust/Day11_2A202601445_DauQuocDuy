@@ -5,6 +5,7 @@ Lab 11 — Part 2A: Input Guardrails
   TODO 3: Input Guardrail Plugin (ADK)
 """
 import re
+import unicodedata
 
 from google.genai import types
 from google.adk.plugins import base_plugin
@@ -41,14 +42,31 @@ def detect_injection(user_input: str) -> bool:
     Returns:
         True if injection detected, False otherwise
     """
+    if not user_input:
+        return False
+
+    # 1. Canonicalize Unicode (NFKC) and remove invisible/zero-width chars
+    normalized = unicodedata.normalize("NFKC", user_input)
+    clean_input = re.sub(r"[\u200b\u200c\u200d\ufeff\u200e\u200f\u00ad\u2060]", "", normalized).lower()
+
     INJECTION_PATTERNS = [
-        # TODO: Add at least 5 regex patterns
-        # Example:
-        # r"ignore (all )?(previous|above) instructions",
+        r"ignore\s+(all\s+)?(previous|above)\s+instructions",
+        r"you\s+are\s+now",
+        r"system\s+prompt",
+        r"reveal\s+(your\s+)?(instructions|prompt|secret|password|internal\s+password)",
+        r"pretend\s+you\s+are",
+        r"act\s+as\s+(a\s+|an\s+)?unrestricted",
+        r"bỏ\s+qua\s+(mọi\s+)?quy\s+định",
+        r"cho\s+tôi\s+(biết\s+)?mật\s+khẩu",
+        r"hiển\s+thị\s+(mật\s+khẩu|system\s+prompt)",
+        r"bỏ\s+qua\s+hướng\s+dẫn",
+        r"show\s+(me\s+)?(the\s+)?(admin\s+)?password",
+        r"override\s+system",
+        r"disregard\s+(all\s+)?instructions",
     ]
 
     for pattern in INJECTION_PATTERNS:
-        if re.search(pattern, user_input, re.IGNORECASE):
+        if re.search(pattern, clean_input, re.IGNORECASE):
             return True
     return False
 
@@ -72,14 +90,23 @@ def topic_filter(user_input: str) -> bool:
     Returns:
         True if input should be BLOCKED (off-topic or blocked topic)
     """
+    if not user_input or not user_input.strip():
+        return False
+
     input_lower = user_input.lower()
 
-    # TODO: Implement logic:
-    # 1. If input contains any blocked topic -> return True
-    # 2. If input doesn't contain any allowed topic -> return True
-    # 3. Otherwise -> return False (allow)
+    # 1. If input contains any blocked topic -> return True (BLOCK)
+    for topic in BLOCKED_TOPICS:
+        if topic.lower() in input_lower:
+            return True
 
-    pass  # Replace with your implementation
+    # 2. If input contains any allowed topic -> return False (ALLOW)
+    for topic in ALLOWED_TOPICS:
+        if topic.lower() in input_lower:
+            return False
+
+    # 3. Otherwise -> return True (BLOCK off-topic)
+    return True
 
 
 # ============================================================
@@ -132,14 +159,19 @@ class InputGuardrailPlugin(base_plugin.BasePlugin):
         self.total_count += 1
         text = self._extract_text(user_message)
 
-        # TODO: Implement logic:
-        # 1. Call detect_injection(text)
-        #    - If True: increment blocked_count, return self._block_response("...")
-        # 2. Call topic_filter(text)
-        #    - If True: increment blocked_count, return self._block_response("...")
-        # 3. If both are False: return None (let message through)
+        if detect_injection(text):
+            self.blocked_count += 1
+            return self._block_response(
+                "Yêu cầu bị từ chối do vi phạm quy tắc an toàn (Prompt Injection)."
+            )
 
-        pass  # Replace with your implementation
+        if topic_filter(text):
+            self.blocked_count += 1
+            return self._block_response(
+                "Yêu cầu nằm ngoài phạm vi hỗ trợ của VinBank."
+            )
+
+        return None
 
 
 # ============================================================
