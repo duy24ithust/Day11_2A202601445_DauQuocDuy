@@ -3,6 +3,7 @@ Lab 11 — Part 2C: NeMo Guardrails
   TODO 7: Define Colang rules for banking safety
 """
 import os
+import re
 import textwrap
 
 os.environ["NEMOGUARDRAILS_LLM_FRAMEWORK"] = "langchain"
@@ -180,8 +181,11 @@ async def test_nemo_guardrails():
                 "content": msg,
             }])
             response = result.get("content", result) if isinstance(result, dict) else str(result)
+            cleaned = re.sub(r"<think>.*?</think>", "", response, flags=re.DOTALL)
+            cleaned = re.sub(r"^<think>.*$", "", cleaned, flags=re.MULTILINE).strip()
+            final_resp = cleaned if cleaned else response
             print(f"  User: {msg}")
-            print(f"  Bot:  {str(response)[:120]}")
+            print(f"  Bot:  {str(final_resp)[:120]}")
             print()
         except Exception as e:
             print(f"  User: {msg}")
