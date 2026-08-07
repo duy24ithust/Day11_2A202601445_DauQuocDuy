@@ -6,6 +6,9 @@ You may use Google ADK plugins, LangGraph, NeMo, or pure Python.
 """
 from __future__ import annotations
 
+import re
+import urllib.parse
+
 from assignment.rate_limiter import RateLimitPlugin
 from assignment.audit_log import AuditLogPlugin
 from assignment.monitoring import MonitoringAlert
@@ -19,7 +22,35 @@ def is_egress_allowed(destination: str, payload: str) -> bool:
     contain a password, API key, database host, phone number or email address.
     Do not let the LLM's prose decide this policy.
     """
-    raise NotImplementedError("Implement is_egress_allowed")
+    if not destination or not payload:
+        return False
+
+    try:
+        parsed = urllib.parse.urlparse(destination)
+    except Exception:
+        return False
+
+    # 1. Check scheme and exact hostname
+    if parsed.scheme != "https":
+        return False
+    if parsed.hostname != "api.vinbank.example":
+        return False
+
+    # 2. Check payload for sensitive data / secrets
+    BLOCKED_PATTERNS = [
+        r"admin123",
+        r"sk-[a-zA-Z0-9-]+",
+        r"db\.vinbank\.internal",
+        r"0\d{9,10}",
+        r"[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}",
+        r"password\s*[:=]\s*\S+",
+    ]
+
+    for pattern in BLOCKED_PATTERNS:
+        if re.search(pattern, payload, re.IGNORECASE):
+            return False
+
+    return True
 
 
 def build_production_plugins(

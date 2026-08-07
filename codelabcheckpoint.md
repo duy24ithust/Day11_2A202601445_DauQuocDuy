@@ -3,7 +3,7 @@
 ## 📊 Checklist Tiến độ Thực hiện
 - [x] **Checkpoint 0**: Cài đặt môi trường & Chạy smoke test (5/5 pass) + public test. *(Đã hoàn thành)*
 - [x] **Checkpoint 1**: Lọc & Chặn Prompt Injection (`detect_injection`, `topic_filter`, `InputGuardrailPlugin`). *(3/3 public tests passed)*
-- [ ] **Checkpoint 2**: Bảo vệ dữ liệu nhạy cảm & Kiểm soát Egress Action (`content_filter`, `safety_judge`, `is_egress_allowed`).
+- [x] **Checkpoint 2**: Bảo vệ dữ liệu nhạy cảm & Kiểm soát Egress Action (`content_filter`, `safety_judge`, `is_egress_allowed`). *(2/2 public tests passed)*
 - [ ] **Checkpoint 3**: Cấu hình Human-In-The-Loop (`ConfidenceRouter`, 3 decision points).
 - [ ] **Checkpoint 4**: Nhật ký Audit (`AuditLogPlugin`) & Monitoring Alert (`MonitoringAlert`, `RateLimiter`).
 - [ ] **Checkpoint 5**: Red Team (`run_attacks`, 5 adversarial prompts, AI attack generator, before/after evaluation).

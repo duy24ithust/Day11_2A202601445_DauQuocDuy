@@ -30,18 +30,18 @@
 ### 📍 Checkpoint 2 — Bảo vệ dữ liệu nhạy cảm & Kiểm soát Egress Action
 *Files thực hiện:* [`src/guardrails/output_guardrails.py`](file:///Users/dauquocduy/workspace/AI20K/lab/Day11_2A202601445_DauQuocDuy/src/guardrails/output_guardrails.py) & [`src/assignment/pipeline.py`](file:///Users/dauquocduy/workspace/AI20K/lab/Day11_2A202601445_DauQuocDuy/src/assignment/pipeline.py)
 
-- [ ] **TODO 4 (`content_filter` trong `output_guardrails.py`)**:
-  - [ ] Lọc bỏ PII (Số điện thoại, Email, CMND/CCCD, Số thẻ).
-  - [ ] Lọc bỏ Secret/Credential (`admin123`, API Key dạng `sk-vinbank-...`, DB Host `db.vinbank.internal`).
-  - [ ] Thay thế bằng nhãn mask/redact dạng `[REDACTED_PHONE]`, `[REDACTED_SECRET]`.
-- [ ] **TODO 5 (`safety_judge_agent`)**:
-  - [ ] Cấu hình mô hình `LlmAgent` (`gemini-3.1-flash-lite`) đóng vai trò Judge kiểm tra ngữ nghĩa an toàn của câu trả lời.
-- [ ] **TODO 6 (`OutputGuardrailPlugin`)**:
-  - [ ] Áp dụng `content_filter` và `safety_judge_agent` trong hook `after_run`.
-- [ ] **TODO 8A (`is_egress_allowed` trong `pipeline.py`)**:
-  - [ ] Parse chính xác hostname từ URL target. Chỉ cho phép hostname thuộc allowlist (`api.vinbank.example`).
-  - [ ] Từ chối subdomain mạo danh (vd: `api.vinbank.example.evil.com`) và external domain (`evil.example`).
-  - [ ] Kiểm tra payload gửi đi không chứa thông tin nhạy cảm/secret.
+- [x] **TODO 4 (`content_filter` trong `output_guardrails.py`)**:
+  - [x] Lọc bỏ PII (Số điện thoại, Email, CMND/CCCD, Số thẻ).
+  - [x] Lọc bỏ Secret/Credential (`admin123`, API Key dạng `sk-vinbank-...`, DB Host `db.vinbank.internal`).
+  - [x] Thay thế bằng nhãn mask/redact dạng `[REDACTED]`. *(PASSED test_content_filter_redacts_secrets)*
+- [x] **TODO 5 (`safety_judge_agent`)**:
+  - [x] Cấu hình mô hình `LlmAgent` (`gemini-3.1-flash-lite`) đóng vai trò Judge kiểm tra ngữ nghĩa an toàn của câu trả lời.
+- [x] **TODO 6 (`OutputGuardrailPlugin`)**:
+  - [x] Áp dụng `content_filter` và `safety_judge_agent` trong hook `after_run`.
+- [x] **TODO 8A (`is_egress_allowed` trong `pipeline.py`)**:
+  - [x] Parse chính xác hostname từ URL target bằng `urlparse`. Chỉ cho phép hostname thuộc allowlist (`api.vinbank.example`).
+  - [x] Từ chối subdomain mạo danh (vd: `api.vinbank.example.evil.com`) và external domain (`evil.example`).
+  - [x] Kiểm tra payload gửi đi không chứa thông tin nhạy cảm/secret. *(PASSED test_egress_policy_blocks_sensitive_payload_and_unknown_destination)*
 - [ ] **TODO 7 (`nemo_guardrails.py`)** *(Tùy chọn/Nâng cao)*:
   - [ ] Định nghĩa các quy tắc Colang quản lý hội thoại ngân hàng an toàn.
 
