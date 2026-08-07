@@ -7,7 +7,7 @@
 - [x] **Checkpoint 3**: Cấu hình Human-In-The-Loop (`ConfidenceRouter`, 3 decision points). *(3/3 public tests passed)*
 - [x] **Checkpoint 4**: Nhật ký Audit (`AuditLogPlugin`) & Monitoring Alert (`MonitoringAlert`, `RateLimiter`). *(Completed)*
 - [x] **Checkpoint 5**: Red Team (`run_attacks`, 5 adversarial prompts, AI attack generator, before/after evaluation). *(Completed)*
-- [ ] **Checkpoint 6**: Báo cáo Red Team (`report/<MSSV>_report.md`), Grade Self-Check & Nộp bài.
+- [x] **Checkpoint 6**: Báo cáo Red Team (`report/2A202601445_report.md`), Grade Self-Check & Nộp bài. *(13/13 public tests passed, technical_failure: false, schema points: 10/10)*
 
 ---
 

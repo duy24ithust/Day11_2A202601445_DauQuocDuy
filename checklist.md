@@ -93,21 +93,19 @@
 ---
 
 ### 📍 Checkpoint 6 — Viết Báo cáo & Đóng gói nộp bài
-*File thực hiện:* `report/<MSSV>_report.md` & Root Folder
+*File thực hiện:* [`report/2A202601445_report.md`](file:///Users/dauquocduy/workspace/AI20K/lab/Day11_2A202601445_DauQuocDuy/report/2A202601445_report.md) & Root Folder
 
-- [ ] **Viết Báo cáo Red Team (`report/<MSSV>_report.md`)**:
-  - [ ] Nguồn gốc câu lệnh tấn công (User / Email / RAG / Tool).
-  - [ ] Hậu quả nếu không bị chặn (Lộ secret, chuyển tiền trái phép, v.v.).
-  - [ ] Lớp bảo mật nào đã ngăn chặn được và cơ chế hoạt động.
-  - [ ] Phân tích điểm trade-off / bất tiện đối với người dùng cuối (nếu có).
-  - [ ] Chuỗi vết log/metric/alert chứng minh sự cố.
-- [ ] **Chạy Self-Check toàn bộ bài nộp**:
-  ```bash
-  pytest tests/smoke -q
-  pytest tests/public -q
-  python scripts/grade.py --submission-dir . --out outputs/grade_report.json
-  ```
-- [ ] **Kiểm tra Artifacts trước khi Commit**:
-  - [ ] Đảm bảo có đầy đủ: `README.md`, `src/assignment/`, `src/attacks/attacks.py`, `outputs/results.json`, `outputs/audit_log.json`, `outputs/metrics.json`, `outputs/attack_results.json`, `report/<MSSV>_report.md`.
-  - [ ] **KHÔNG COMMIT** file `.env`, API key, token hoặc dữ liệu nhạy cảm thực tế.
-- [ ] **Nộp bài**: Push code lên repo GitHub Fork và gửi link trên Codelabs.
+- [x] **Viết Báo cáo Red Team (`report/2A202601445_report.md`)**:
+  - [x] Nguồn gốc câu lệnh tấn công (User / Email / RAG / Tool).
+  - [x] Hậu quả nếu không bị chặn (Lộ secret, chuyển tiền trái phép, v.v.).
+  - [x] Lớp bảo mật nào đã ngăn chặn được và cơ chế hoạt động.
+  - [x] Phân tích điểm trade-off / bất tiện đối với người dùng cuối (nếu có).
+  - [x] Chuỗi vết log/metric/alert chứng minh sự cố. *(COMPLETED)*
+- [x] **Chạy Self-Check toàn bộ bài nộp**:
+  - [x] `pytest tests/smoke -q` *(5/5 passed)*.
+  - [x] `pytest tests/public -q` *(13/13 passed - 100%)*.
+  - [x] `python scripts/grade.py --submission-dir . --out outputs/grade_report.json` *(technical_failure: false, schema points: 10/10)*.
+- [x] **Kiểm tra Artifacts trước khi Commit**:
+  - [x] Đảm bảo có đầy đủ: `README.md`, `src/assignment/`, `src/attacks/attacks.py`, `outputs/results.json`, `outputs/audit_log.json`, `outputs/metrics.json`, `outputs/attack_results.json`, `report/2A202601445_report.md`.
+  - [x] **KHÔNG COMMIT** file `.env`, API key, token hoặc dữ liệu nhạy cảm thực tế.
+- [x] **Nộp bài**: Push code lên repo GitHub Fork và gửi link trên Codelabs. *(Sẵn sàng nộp bài!)*
