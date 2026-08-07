@@ -2,7 +2,10 @@
 Lab 11 — Part 2C: NeMo Guardrails
   TODO 7: Define Colang rules for banking safety
 """
+import os
 import textwrap
+
+os.environ["NEMOGUARDRAILS_LLM_FRAMEWORK"] = "langchain"
 
 try:
     from nemoguardrails import RailsConfig, LLMRails
@@ -19,17 +22,8 @@ except ImportError:
 NEMO_YAML_CONFIG = textwrap.dedent("""\
     models:
       - type: main
-        engine: google
-        model: gemini-3.1-flash-lite
-
-    rails:
-      input:
-        flows:
-          - check user message
-
-      output:
-        flows:
-          - check bot response
+        engine: google_genai
+        model: gemma-4-31b-it
 """)
 
 
