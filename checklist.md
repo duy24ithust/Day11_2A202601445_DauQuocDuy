@@ -50,15 +50,15 @@
 ### 📍 Checkpoint 3 — Cấu hình Human-In-The-Loop (HITL) cho hành động rủi ro
 *File thực hiện:* [`src/hitl/hitl.py`](file:///Users/dauquocduy/workspace/AI20K/lab/Day11_2A202601445_DauQuocDuy/src/hitl/hitl.py)
 
-- [ ] **TODO 11 (`ConfidenceRouter.route`)**:
-  - [ ] `Confidence ≥ 0.90` và hành động thường ➔ Route: `auto_send`.
-  - [ ] `Confidence 0.70 – < 0.90` ➔ Route: `queue_review`.
-  - [ ] `Confidence < 0.70` ➔ Route: `escalate`.
-  - [ ] **Mọi `HIGH_RISK_ACTIONS`** (chuyển tiền, đổi người nhận, đóng tài khoản) ➔ **bắt buộc Route: `escalate`** (Fail-closed).
-- [ ] **TODO 12 (`hitl_decision_points`)**:
-  - [ ] Thiết kế ít nhất 3 điểm duyệt (Decision Points) cho hành động nguy hiểm.
-  - [ ] Cung cấp đầy đủ thông tin context/diff (người nhận cũ/mới, số tiền) cho Reviewer.
-  - [ ] Đảm bảo xử lý chính xác 3 trạng thái: `Approve`, `Reject`, và `Timeout` (Không tự động gửi tiền khi hết giờ).
+- [x] **TODO 11 (`ConfidenceRouter.route`)**:
+  - [x] `Confidence ≥ 0.90` và hành động thường ➔ Route: `auto_send`.
+  - [x] `Confidence 0.70 – < 0.90` ➔ Route: `queue_review`.
+  - [x] `Confidence < 0.70` ➔ Route: `escalate`.
+  - [x] **Mọi `HIGH_RISK_ACTIONS`** (chuyển tiền, đổi người nhận, đóng tài khoản) ➔ **bắt buộc Route: `escalate`** (Fail-closed). *(PASSED test_confidence_router_high_risk_always_escalates & thresholds)*
+- [x] **TODO 12 (`hitl_decision_points`)**:
+  - [x] Thiết kế 3 điểm duyệt (Decision Points) cho hành động nguy hiểm.
+  - [x] Cung cấp đầy đủ thông tin context/diff (người nhận cũ/mới, số tiền) cho Reviewer.
+  - [x] Đảm bảo xử lý chính xác 3 trạng thái: `Approve`, `Reject`, và `Timeout` (Không tự động gửi tiền khi hết giờ). *(PASSED test_hitl_points_include_reviewer_lifecycle)*
 
 ---
 
