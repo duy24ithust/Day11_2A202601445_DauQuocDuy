@@ -6,7 +6,7 @@
 - [x] **Checkpoint 2**: Bảo vệ dữ liệu nhạy cảm & Kiểm soát Egress Action (`content_filter`, `safety_judge`, `is_egress_allowed`). *(2/2 public tests passed)*
 - [x] **Checkpoint 3**: Cấu hình Human-In-The-Loop (`ConfidenceRouter`, 3 decision points). *(3/3 public tests passed)*
 - [x] **Checkpoint 4**: Nhật ký Audit (`AuditLogPlugin`) & Monitoring Alert (`MonitoringAlert`, `RateLimiter`). *(Completed)*
-- [ ] **Checkpoint 5**: Red Team (`run_attacks`, 5 adversarial prompts, AI attack generator, before/after evaluation).
+- [x] **Checkpoint 5**: Red Team (`run_attacks`, 5 adversarial prompts, AI attack generator, before/after evaluation). *(Completed)*
 - [ ] **Checkpoint 6**: Báo cáo Red Team (`report/<MSSV>_report.md`), Grade Self-Check & Nộp bài.
 
 ---

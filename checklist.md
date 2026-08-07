@@ -81,14 +81,14 @@
 ### 📍 Checkpoint 5 — Red Team (Tấn công mô phỏng) & Đánh giá an toàn
 *Files thực hiện:* [`src/attacks/attacks.py`](file:///Users/dauquocduy/workspace/AI20K/lab/Day11_2A202601445_DauQuocDuy/src/attacks/attacks.py), [`src/testing/testing.py`](file:///Users/dauquocduy/workspace/AI20K/lab/Day11_2A202601445_DauQuocDuy/src/testing/testing.py), & [`src/main.py`](file:///Users/dauquocduy/workspace/AI20K/lab/Day11_2A202601445_DauQuocDuy/src/main.py)
 
-- [ ] **TODO 13 (`run_attacks` trong `attacks.py`)**:
-  - [ ] Viết ít nhất 5 prompt tấn công độc hại thuộc tối thiểu 4 nhóm (Direct, Indirect, Obfuscation, Social Engineering / Action Egress).
-- [ ] **TODO 14 (Tự động sinh testcase tấn công bằng AI)**:
-  - [ ] Gọi target thật và lưu bằng chứng phản hồi vào `outputs/attack_results.json`.
-- [ ] **TODO 9 (`rerun_attacks_with_guardrails` trong `testing.py`)**:
-  - [ ] Chạy so sánh hiệu quả Trước và Sau khi bật Guardrails (Before vs After).
-- [ ] **TODO 10 (`SecurityTestPipeline` trong `testing.py`)**:
-  - [ ] Chạy tự động hóa đường ống kiểm thử an toàn cho toàn bộ hệ thống.
+- [x] **TODO 13 (`run_attacks` trong `attacks.py`)**:
+  - [x] Viết 5 prompt tấn công độc hại thuộc 5 nhóm (Completion, Reformatting, Creative writing, Confirmation, Gradual escalation). *(PASSED)*
+- [x] **TODO 14 (Tự động sinh testcase tấn công bằng AI)**:
+  - [x] Sinh kịch bản tấn công qua `generate_ai_attacks()` dùng `gemini-3.1-flash-lite`. *(PASSED)*
+- [x] **TODO 9 (`run_comparison` trong `testing.py`)**:
+  - [x] Thử nghiệm so sánh hiệu quả Trước và Sau khi bật Guardrails (Before vs After). *(PASSED)*
+- [x] **TODO 10 (`SecurityTestPipeline` trong `testing.py`)**:
+  - [x] Tự động hóa đường ống kiểm thử an toàn, tính toán `block_rate` và `leak_rate`. *(PASSED)*
 
 ---
 
