@@ -1,10 +1,25 @@
-# Day 11 — Controlled Agent Security (2026)
+# Day 11 — Controlled Agent Security (VinBank Assistant)
 
-Làm sao để ứng dụng agent an toàn hơn?
+**Họ và tên:** Đậu Quốc Duy  
+**Mã số sinh viên (MSSV):** 2A202601445  
+**Lớp / Khóa:** AI20K  
+**Repository:** [https://github.com/duy24ithust/Day11_2A202601445_DauQuocDuy](https://github.com/duy24ithust/Day11_2A202601445_DauQuocDuy)
 
-**Hình thức:** bài tập **cá nhân** (1 người / 1 MSSV).
+---
 
-**Đề bài duy nhất:** [`assignment11.md`](assignment11.md) · Cách nộp: [`SUBMISSION.md`](SUBMISSION.md)
+## Tổng quan Dự án & Hướng dẫn Chạy (Quickstart)
+
+```bash
+# 1) Kích hoạt môi trường ảo (.venv)
+source .venv/bin/activate   # Linux/macOS
+# .\.venv\Scripts\Activate.ps1 # Windows
+
+# 2) Chạy toàn bộ Test Suite (Part 1 -> Part 5)
+python src/main.py
+
+# 3) Chạy giao diện Web UI
+python src/web_ui.py
+```
 
 ---
 
