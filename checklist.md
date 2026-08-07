@@ -65,16 +65,16 @@
 ### 📍 Checkpoint 4 — Nhật ký Audit & Cảnh báo giám sát (Monitoring)
 *Files thực hiện:* [`src/assignment/audit_log.py`](file:///Users/dauquocduy/workspace/AI20K/lab/Day11_2A202601445_DauQuocDuy/src/assignment/audit_log.py), [`src/assignment/monitoring.py`](file:///Users/dauquocduy/workspace/AI20K/lab/Day11_2A202601445_DauQuocDuy/src/assignment/monitoring.py), & [`src/assignment/rate_limiter.py`](file:///Users/dauquocduy/workspace/AI20K/lab/Day11_2A202601445_DauQuocDuy/src/assignment/rate_limiter.py)
 
-- [ ] **Audit Log (`AuditLogPlugin`)**:
-  - [ ] Sử dụng một `request_id` duy nhất nối từ input ➔ decision ➔ output.
-  - [ ] Ghi lại timestamp, layer phát hiện, latency và quyết định của reviewer.
-  - [ ] Lưu kết quả ra file `outputs/audit_log.json`.
-- [ ] **Rate Limiter (`RateLimiter`)**:
-  - [ ] Triển khai thuật toán Sliding Window giới hạn số request/phút.
-- [ ] **Monitoring & Alerts (`MonitoringAlert`)**:
-  - [ ] Đếm và tính toán tỷ lệ: Block Rate, Rate Limit Hits, Judge Failure Rate.
-  - [ ] Bật cảnh báo (Alert) khi chỉ số vượt ngưỡng cho phép.
-  - [ ] Xuất báo cáo ra `outputs/metrics.json`.
+- [x] **Audit Log (`AuditLogPlugin`)**:
+  - [x] Sử dụng một `request_id` duy nhất nối từ input ➔ decision ➔ output.
+  - [x] Ghi lại timestamp, layer phát hiện, latency và quyết định của reviewer.
+  - [x] Lưu kết quả ra file `outputs/audit_log.json`. *(PASSED)*
+- [x] **Rate Limiter (`RateLimiter`)**:
+  - [x] Triển khai thuật toán Sliding Window giới hạn số request/phút. *(PASSED)*
+- [x] **Monitoring & Alerts (`MonitoringAlert`)**:
+  - [x] Đếm và tính toán tỷ lệ: Block Rate, Rate Limit Hits, Judge Failure Rate.
+  - [x] Bật cảnh báo (Alert) khi chỉ số vượt ngưỡng cho phép.
+  - [x] Xuất báo cáo ra `outputs/metrics.json`. *(PASSED)*
 
 ---
 
