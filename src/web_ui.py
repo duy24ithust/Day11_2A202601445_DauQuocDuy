@@ -47,7 +47,8 @@ async def test_flow_endpoint(req: TestFlowRequest):
     
     # 1. Normalization & Invisible Chars cleaning breakdown
     normalized = unicodedata.normalize("NFKC", req.user_input)
-    clean_text = re.sub(r"[\u200b\u200c\u200d\ufeff\u200e\u200f\u00ad\u2060]", "", normalized).lower()
+    clean_text = re.sub(r"\\u200[bcdef0-9]|\\ufeff", "", normalized, flags=re.IGNORECASE)
+    clean_text = re.sub(r"[\u200b\u200c\u200d\ufeff\u200e\u200f\u00ad\u2060]", "", clean_text).lower()
     
     has_invisible_chars = (len(req.user_input) != len(clean_text)) or (req.user_input != normalized)
 

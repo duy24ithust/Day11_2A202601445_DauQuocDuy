@@ -45,9 +45,10 @@ def detect_injection(user_input: str) -> bool:
     if not user_input:
         return False
 
-    # 1. Canonicalize Unicode (NFKC) and remove invisible/zero-width chars
+    # 1. Canonicalize Unicode (NFKC) and remove invisible/zero-width chars (both unicode & literal escapes)
     normalized = unicodedata.normalize("NFKC", user_input)
-    clean_input = re.sub(r"[\u200b\u200c\u200d\ufeff\u200e\u200f\u00ad\u2060]", "", normalized).lower()
+    clean_input = re.sub(r"\\u200[bcdef0-9]|\\ufeff", "", normalized, flags=re.IGNORECASE)
+    clean_input = re.sub(r"[\u200b\u200c\u200d\ufeff\u200e\u200f\u00ad\u2060]", "", clean_input).lower()
 
     INJECTION_PATTERNS = [
         r"ignore\s+(all\s+)?(previous|above)\s+instructions",
